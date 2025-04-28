@@ -16,7 +16,10 @@ Installs the mise CLI
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | version | Install a specific version | string | latest |
-| systemActivate | Select how to activate mise in the system. `none` means no activation, `path` means add to PATH, and `shims` means use shims to activate. | string | path |
+| installPath | Path to install mise | string | /usr/local/bin/mise |
+| activate | Select how to activate mise in the system. `none` means no activation, `path` means add to PATH, and `shims` means use shims to activate. | string | path |
+| trust | Automatically run 'mise trust' to trust workspace | boolean | true |
+| install | Automatically run 'mise install' to install workspace tools | boolean | true |
 
 
 
