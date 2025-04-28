@@ -57,5 +57,23 @@
       },
       "mise": {}
     }
+  },
+  "trust-true": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "trust": true
+      }
+    },
+    "updateContentCommand": "touch mise.toml"
+  },
+  "trust-false": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "trust": false
+      }
+    },
+    "updateContentCommand": "touch mise.toml"
   }
 }
