@@ -146,6 +146,24 @@ chown ${_REMOTE_USER} ${MISE_INSTALL_PATH}
 install_mise_activate bash /etc/bash.bashrc
 install_mise_activate zsh /etc/zsh/zshrc
 
+# Setup postCreateCommand for mise
+mkdir -p /usr/local/share/mise-feature
+
+post_create_file="/usr/local/share/mise-feature/post-create.sh"
+echo "#!/bin/sh" > $post_create_file
+
+if [ "${TRUST}" = "true" ]; then
+    echo "Setting up postCreateCommand for 'mise trust'..."
+    cat << EOF >> $post_create_file
+if [ -x "$(command -v mise)" ]; then
+    echo "Running mise trust to authorize workspace configuration files..."
+    mise trust
+fi
+EOF
+fi
+
+chmod +x $post_create_file
+
 # Clean up
 rm -rf "/tmp/tmp-gnupg"
 rm -rf /var/lib/apt/lists/*

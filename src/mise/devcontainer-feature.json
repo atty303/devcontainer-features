@@ -15,7 +15,13 @@
       "proposals": ["none", "path", "shims"],
       "default": "path",
       "description": "Select how to activate mise in the system. `none` means no activation, `path` means add to PATH, and `shims` means use shims to activate."
+    },
+    "trust": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically run 'mise trust' to trust workspace configuration files"
     }
   },
+  "postCreateCommand": "/usr/local/share/mise-feature/post-create.sh",
   "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
 }
