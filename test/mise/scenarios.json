@@ -96,5 +96,13 @@
       }
     },
     "updateContentCommand": "echo 'tools.bat = \"latest\"' > mise.toml"
+  },
+  "install-path": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "installPath": "/tmp/mise"
+      }
+    }
   }
 }

@@ -3,9 +3,6 @@ set -e
 
 MISE_CLI_INSTALLER_GPG_KEY="0x7413A06D"
 
-# Installer options
-export MISE_INSTALL_PATH="/usr/local/bin/mise"
-
 # Feature options
 if [ ! "$VERSION" = "latest" ]; then
     export MISE_VERSION="$VERSION"
@@ -13,6 +10,8 @@ fi
 if [ "$INSTALL" = "true" ]; then
     TRUST="true"
 fi
+# mise installer options
+export MISE_INSTALL_PATH="${INSTALLPATH:-/usr/local/bin/mise}"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'

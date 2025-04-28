@@ -10,6 +10,11 @@
       "default": "latest",
       "description": "Install a specific version"
     },
+    "installPath": {
+      "type": "string",
+      "default": "/usr/local/bin/mise",
+      "description": "Path to install mise"
+    },
     "activate": {
       "type": "string",
       "proposals": ["none", "path", "shims"],
