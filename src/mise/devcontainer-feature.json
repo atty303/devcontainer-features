@@ -3,6 +3,7 @@
   "id": "mise",
   "version": "1.0.0",
   "description": "Installs the mise CLI",
+  "documentationURL": "https://github.com/atty303/devcontainer-features/tree/main/src/mise",
   "licenseURL": "https://raw.githubusercontent.com/jdx/mise/refs/heads/main/LICENSE",
   "options": {
     "version": {

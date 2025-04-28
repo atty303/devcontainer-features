@@ -1,0 +1,25 @@
+name: "Release dev container features"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Publish"
+        uses: devcontainers/action@v1
+        with:
+          publish-features: "true"
+          base-path-to-features: "./src"
+          features-namespace: "atty303/devcontainer-features"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
