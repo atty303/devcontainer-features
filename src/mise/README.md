@@ -21,6 +21,9 @@ Installs the mise CLI
 | trust | Automatically run 'mise trust' to trust workspace | boolean | true |
 | install | Automatically run 'mise install' to install workspace tools | boolean | true |
 
+## Notes
+
+`activate` option supports bash and zsh.
 
 
 ---
