@@ -10,7 +10,7 @@
       "default": "latest",
       "description": "Install a specific version"
     },
-    "systemActivate": {
+    "activate": {
       "type": "string",
       "proposals": ["none", "path", "shims"],
       "default": "path",
@@ -19,7 +19,12 @@
     "trust": {
       "type": "boolean",
       "default": true,
-      "description": "Automatically run 'mise trust' to trust workspace configuration files"
+      "description": "Automatically run 'mise trust' to trust workspace"
+    },
+    "install": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically run 'mise install' to install workspace tools"
     }
   },
   "postCreateCommand": "/usr/local/share/mise-feature/post-create.sh",

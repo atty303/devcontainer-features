@@ -9,7 +9,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
       "mise": {
-        "systemActivate": "none"
+        "activate": "none"
       }
     }
   },
@@ -17,7 +17,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
       "mise": {
-        "systemActivate": "path"
+        "activate": "path"
       }
     }
   },
@@ -25,7 +25,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
       "mise": {
-        "systemActivate": "shims"
+        "activate": "shims"
       }
     }
   },
@@ -71,9 +71,30 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
       "mise": {
+        "install": false,
         "trust": false
       }
     },
     "updateContentCommand": "touch mise.toml"
+  },
+  "install-true": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "activate": "path",
+        "install": true
+      }
+    },
+    "updateContentCommand": "echo 'tools.bat = \"latest\"' > mise.toml"
+  },
+  "install-false": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "activate": "path",
+        "install": false
+      }
+    },
+    "updateContentCommand": "echo 'tools.bat = \"latest\"' > mise.toml"
   }
 }

@@ -10,6 +10,9 @@ export MISE_INSTALL_PATH="/usr/local/bin/mise"
 if [ ! "$VERSION" = "latest" ]; then
     export MISE_VERSION="$VERSION"
 fi
+if [ "$INSTALL" = "true" ]; then
+    TRUST="true"
+fi
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -118,7 +121,7 @@ install_mise_activate() {
     fi
 
     echo "Activating mise for $shell..."
-    case "$SYSTEMACTIVATE" in
+    case "$ACTIVATE" in
         path)
             echo >> $rc
             echo "eval \"\$(mise activate $shell)\"" >> $rc
@@ -154,10 +157,18 @@ echo "#!/bin/sh" > $post_create_file
 
 if [ "${TRUST}" = "true" ]; then
     echo "Setting up postCreateCommand for 'mise trust'..."
-    cat << EOF >> $post_create_file
+    cat << 'EOF' >> $post_create_file
 if [ -x "$(command -v mise)" ]; then
-    echo "Running mise trust to authorize workspace configuration files..."
-    mise trust
+    mise trust --all --yes --verbose
+fi
+EOF
+fi
+
+if [ "${INSTALL}" = "true" ]; then
+    echo "Setting up postCreateCommand for 'mise install'..."
+    cat << 'EOF' >> $post_create_file
+if [ -x "$(command -v mise)" ]; then
+    mise install --yes
 fi
 EOF
 fi
