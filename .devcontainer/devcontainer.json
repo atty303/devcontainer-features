@@ -4,7 +4,7 @@
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/atty303/devcontainer-features/mise:1": {}
     },
-    "postCreateCommand": "mise trust && mise install --verbose",
+    "postCreateCommand": "mise trust && RUST_BACKTRACE=full mise install --verbose",
     "customizations": {
         "vscode": {
             "extensions": [
