@@ -2,9 +2,9 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-        "ghcr.io/atty303/devcontainer-features/mise:1": {},
+        "ghcr.io/atty303/devcontainer-features/mise:1": {}
     },
-    "postCreateCommand": "mise install",
+    "postCreateCommand": "mise trust && mise install",
     "customizations": {
         "vscode": {
             "extensions": [
