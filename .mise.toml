@@ -1,0 +1,5 @@
+[tools]
+"npm:@devcontainers/cli" = "latest"
+
+[alias]
+devcontainer = "npm:@devcontainers/cli"
