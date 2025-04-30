@@ -1,7 +1,7 @@
 {
   "name": "mise-en-place",
   "id": "mise",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Installs the mise CLI",
   "documentationURL": "https://github.com/atty303/devcontainer-features/tree/main/src/mise",
   "licenseURL": "https://raw.githubusercontent.com/jdx/mise/refs/heads/main/LICENSE",
