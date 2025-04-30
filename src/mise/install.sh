@@ -138,12 +138,34 @@ check_packages curl ca-certificates apt-transport-https dirmngr gnupg2
 . /etc/os-release
 receive_gpg_keys $MISE_CLI_INSTALLER_GPG_KEY
 
+# Get the directory part
+install_dir=$(dirname "$MISE_INSTALL_PATH")
+
+# Create a list of directories to potentially create
+dirs_to_create=""
+current_dir="$install_dir"
+
+# Build the list of non-existent parent directories
+while [ ! -d "$current_dir" ] && [ "$current_dir" != "/" ] && [ "$current_dir" != "." ]; do
+    dirs_to_create="$current_dir $dirs_to_create"
+    current_dir=$(dirname "$current_dir")
+done
+
+# Create directories and set ownership
+if [ -n "$dirs_to_create" ]; then
+    for dir in $dirs_to_create; do
+        mkdir -p "$dir"
+        chown "${_REMOTE_USER}:$(id -gn ${_REMOTE_USER} 2>/dev/null || echo ${_REMOTE_USER})" "$dir"
+        echo "Created directory with correct ownership: $dir"
+    done
+fi
+
 # Run the mise CLI installer
 echo "Installing mise CLI..."
 curl -s https://mise.jdx.dev/install.sh.sig | gpg --decrypt | sh
 
 chmod +x ${MISE_INSTALL_PATH}
-chown ${_REMOTE_USER} ${MISE_INSTALL_PATH}
+chown "${_REMOTE_USER}:$(id -gn ${_REMOTE_USER} 2>/dev/null || echo ${_REMOTE_USER})" "${MISE_INSTALL_PATH}"
 
 install_mise_activate bash /etc/bash.bashrc
 install_mise_activate zsh /etc/zsh/zshrc
