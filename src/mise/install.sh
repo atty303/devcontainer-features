@@ -12,6 +12,8 @@ if [ "$INSTALL" = "true" ]; then
 fi
 # mise installer options
 export MISE_INSTALL_PATH="${INSTALLPATH:-/usr/local/bin/mise}"
+MISE_INSTALL_PATH=$(echo "$MISE_INSTALL_PATH" | sed 's#{CONTAINER_USER_HOME}#'$_CONTAINER_USER_HOME'#g')
+MISE_INSTALL_PATH=$(echo "$MISE_INSTALL_PATH" | sed 's#{REMOTE_USER_HOME}#'$_REMOTE_USER_HOME'#g')
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'

@@ -16,10 +16,16 @@ Installs the mise CLI
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | version | Install a specific version | string | latest |
-| installPath | Path to install mise | string | /usr/local/bin/mise |
+| installPath | Path to install mise. `{REMOTE_USER_HOME}` and `{CONTAINER_USER_HOME}` will be expanded to the user's home directory. | string | /usr/local/bin/mise |
 | activate | Select how to activate mise in the system. `none` means no activation, `path` means add to PATH, and `shims` means use shims to activate. Supports bash and zsh. | string | path |
 | trust | Automatically run `mise trust` to trust workspace (**WARNING**: `mise.toml` in subdirectories will not be trusted even if this option is enabled) | boolean | true |
 | install | Automatically run `mise install` to install workspace tools | boolean | true |
+
+## Customizations
+
+### VS Code Extensions
+
+- `hverlin.mise-vscode`
 
 ## Notes
 

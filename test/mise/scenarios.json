@@ -123,7 +123,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
       "mise": {
-        "installPath": "/tmp/mise"
+        "installPath": "{REMOTE_USER_HOME}/.local/bin/mise"
       }
     }
   }
