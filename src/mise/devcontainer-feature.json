@@ -1,7 +1,7 @@
 {
   "name": "mise-en-place",
   "id": "mise",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Installs the mise CLI",
   "documentationURL": "https://github.com/atty303/devcontainer-features/tree/main/src/mise",
   "licenseURL": "https://raw.githubusercontent.com/jdx/mise/refs/heads/main/LICENSE",
@@ -31,6 +31,18 @@
       "type": "boolean",
       "default": true,
       "description": "Automatically run `mise install` to install workspace tools"
+    }
+  },
+  "customizations": {
+    "jetbrains": {
+      "plugins": [
+        "com.github.l34130.mise"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "hverlin.mise-vscode"
+      ]
     }
   },
   "postCreateCommand": "/usr/local/share/mise-feature/post-create.sh",
