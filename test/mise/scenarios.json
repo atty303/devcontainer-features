@@ -77,6 +77,28 @@
     },
     "updateContentCommand": "touch mise.toml"
   },
+  "trust-true-child": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "trust": true
+      }
+    },
+    "updateContentCommand": "touch mise.toml && mkdir child && touch child/mise.toml"
+  },
+  "trust-env": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "mise": {
+        "install": false,
+        "trust": false
+      }
+    },
+    "containerEnv": {
+      "MISE_TRUSTED_CONFIG_PATHS": "${containerWorkspaceFolder}"
+    },
+    "updateContentCommand": "touch mise.toml && mkdir child && touch child/mise.toml"
+  },
   "install-true": {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {

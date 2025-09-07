@@ -17,13 +17,19 @@ Installs the mise CLI
 |-----|-----|-----|-----|
 | version | Install a specific version | string | latest |
 | installPath | Path to install mise | string | /usr/local/bin/mise |
-| activate | Select how to activate mise in the system. `none` means no activation, `path` means add to PATH, and `shims` means use shims to activate. | string | path |
-| trust | Automatically run 'mise trust' to trust workspace | boolean | true |
-| install | Automatically run 'mise install' to install workspace tools | boolean | true |
+| activate | Select how to activate mise in the system. `none` means no activation, `path` means add to PATH, and `shims` means use shims to activate. Supports bash and zsh. | string | path |
+| trust | Automatically run `mise trust` to trust workspace (**WARNING**: `mise.toml` in subdirectories will not be trusted even if this option is enabled) | boolean | true |
+| install | Automatically run `mise install` to install workspace tools | boolean | true |
 
 ## Notes
 
-`activate` option supports bash and zsh.
+To trust all `mise.toml` files including those in workspace subdirectories, add the following to your `devcontainer.json`:
+
+```json
+"containerEnv": {
+    "MISE_TRUSTED_CONFIG_PATHS": "${containerWorkspaceFolder}"
+}
+```
 
 
 ---
